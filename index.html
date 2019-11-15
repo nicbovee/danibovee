@@ -4,6 +4,34 @@
         <meta name="description" content="dani bovee.">
     </head>
     <body>
-        <p>dani bovee.</p>
+        <p id="dani"></p>
     </body>
+
+    <script>
+        var danibovee = "dani bovee.";
+        var dani = document.getElementById("dani");
+
+        danibovee.split('').forEach(x => {
+            var newSpan = document.createElement('span');
+            newSpan.textContent = x;
+            dani.appendChild(newSpan);
+        })
+
+        document.body.addEventListener("click", function() {
+            dani.style.fontSize = Math.round((Math.random() * 200));
+            dani.textContent = "";
+            danibovee.split('').forEach(x => {
+                var r = Math.round((Math.random() * 254));
+                var g = Math.round((Math.random() * 254));
+                var b = Math.round((Math.random() * 254));
+                var newSpan = document.createElement('span');
+                newSpan.textContent = x;
+                newSpan.style.fontSize = Math.round((Math.random() * 200));
+                newSpan.style.color = `rgb(${r},${g},${b})`;
+                dani.appendChild(newSpan);
+            })
+     
+        })
+        
+    </script>
 </html>
