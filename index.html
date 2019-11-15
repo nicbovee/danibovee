@@ -5,25 +5,69 @@
     </head>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0;
+        }
+        .background {
+            width: 100%;
+            height: 100%;
             -webkit-touch-callout: none; /* iOS Safari */
             -webkit-user-select: none; /* Safari */
             -khtml-user-select: none; /* Konqueror HTML */
             -moz-user-select: none; /* Old versions of Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
+            overflow: hidden;
+            background: #fff0cd;
+            padding: 0;
+        }
+        .dani {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
         }
     </style>
     <body>
-        <p id="dani"></p>
+        <p id="dani" class="dani"></p>
+        <div id="background" class="background"></div>
     </body>
 
     <script>
         var danibovee = "dani bovee.";
+        var background = "d a n i b o v e e "
         var dani = document.getElementById("dani");
+        var backgroundNode = document.getElementById("background");
 
+        backgroundNode.textContent = "";
+               
+            setInterval(function(){
+                backgroundNode.textContent = "";
+                    for(let x = 500; x > 0; x--) {
+                background.split('').forEach(x => {
+                    var r = Math.round((Math.random() * 254));
+                    var g = Math.round((Math.random() * 254));
+                    var b = Math.round((Math.random() * 254));
+                    var newSpan = document.createElement('span');
+                    newSpan.textContent = x;
+                    newSpan.style.color = `rgba(${r},${g},${b},0.3)`;
+                    backgroundNode.appendChild(newSpan);
+                })
+            }
+            }, 100)
+    
+        
+        
+       
+        
         danibovee.split('').forEach(x => {
             var newSpan = document.createElement('span');
             newSpan.textContent = x;
