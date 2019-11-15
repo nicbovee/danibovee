@@ -3,6 +3,13 @@
         <title>dani bovee.</title>
         <meta name="description" content="dani bovee.">
     </head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
     <body>
         <p id="dani"></p>
     </body>
@@ -18,7 +25,6 @@
         })
 
         document.body.addEventListener("click", function() {
-            dani.style.fontSize = Math.round((Math.random() * 200));
             dani.textContent = "";
             danibovee.split('').forEach(x => {
                 var r = Math.round((Math.random() * 254));
@@ -26,12 +32,15 @@
                 var b = Math.round((Math.random() * 254));
                 var newSpan = document.createElement('span');
                 newSpan.textContent = x;
-                newSpan.style.fontSize = Math.round((Math.random() * 200));
+                newSpan.style.fontSize = getRandomArbitrary(15, 200);
                 newSpan.style.color = `rgb(${r},${g},${b})`;
                 dani.appendChild(newSpan);
             })
      
         })
+        function getRandomArbitrary(min, max) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
         
     </script>
 </html>
